@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>日本語住所 → 英語表記変換ツール</title>
+    <link rel="stylesheet" href="app.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>🇯🇵 住所 → 🇺🇸 Address 変換</h1>
+            <p>郵便番号から英語表記の住所を生成します</p>
+        </header>
+
+        <main>
+            <!-- データ読み込み中の表示 -->
+            <div id="loading" class="loading-state">
+                <div class="spinner"></div>
+                <p>住所データを読み込んでいます...<br><small>※初回は時間がかかる場合があります</small></p>
+            </div>
+
+            <!-- アプリケーションフォーム（データロード後に表示） -->
+            <div id="app-content" class="hidden">
+                <div class="form-group">
+                    <label for="zip-search">1. 郵便番号で検索</label>
+                    <input type="text" id="zip-search" placeholder="例: 1000001 (ハイフンなし)" maxlength="7">
+                    <p class="help-text">数字を入力すると下のメニューに候補が表示されます</p>
+                </div>
+
+                <div class="form-group">
+                    <label for="address-select">2. 住所を選択 (町域)</label>
+                    <select id="address-select" disabled>
+                        <option value="">郵便番号を入力してください</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="house-number">3. 番地 (House No.)</label>
+                    <input type="text" id="house-number" placeholder="例: 1-2-3">
+                </div>
+
+                <div class="form-group">
+                    <label for="building-name">4. マンション/ビル名 (Building Name)</label>
+                    <input type="text" id="building-name" placeholder="例: Tokyo Tower 301">
+                </div>
+
+                <div class="result-area">
+                    <h2>英語表記 (Result)</h2>
+                    <div class="result-box">
+                        <p id="result-text">住所を選択してください...</p>
+                        <button id="copy-btn" class="hidden" title="コピーする">📋 Copy</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>Powered by Japan Post Data</p>
+        </footer>
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>
